@@ -16,7 +16,7 @@ import {
 } from "@/shadcn-components/ui/card"
 import { toast } from "sonner"
 
-const CategoryProductList = ({ categoryName }) => {
+const CategoryProductList = ({ categoryName, filterValue }) => {
 
     const allProducts = useSelector((state) => state.categoryProducts.categoryProducts)
     const loading = useSelector((state) => state.categoryProducts.loading)
@@ -37,15 +37,25 @@ const CategoryProductList = ({ categoryName }) => {
         return <p>There is an error {error}</p>
     }
 
+    const sortedProducts = [...allProducts].sort((a, b) => {
+        if (filterValue === "price low to high") {
+            return a.price - b.price;
+        } else if (filterValue === "price high to low") {
+            return b.price - a.price;
+        } else {
+            return 0;
+        }
+    });
+
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));
     }
 
     return (
         <div className='w-full container mx-auto min-h-screen'>
-            <p className='text-center'>Category Products</p>
+            <p className='text-center'>Category: {categoryName}</p>
             <div class="flex flex-wrap gap-2 p-3 m-auto">
-                {allProducts.map((product) =>
+                {sortedProducts.map((product) =>
                     <Card className="w-[285px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-1">
                         <CardHeader>
                             <CardDescription className="text-center">

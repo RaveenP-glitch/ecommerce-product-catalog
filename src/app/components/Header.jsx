@@ -9,7 +9,9 @@ const Header = () => {
         <div className='flex flex-row bg-slate-300 justify-between p-5'>
             <div><Link href="/">Logo</Link></div>
             <div>
-                <ShoppingCartIcon />
+                <Link href={"/cart"}>
+                    <ShoppingCartIcon />
+                </Link>
             </div>
         </div>
     </div>
