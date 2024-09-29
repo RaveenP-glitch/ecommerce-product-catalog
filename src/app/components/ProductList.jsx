@@ -41,27 +41,28 @@ const ProductList = () => {
     }
 
     return (
-        <div className='w-full'>
-            <p className='text-center'>Top Selling Products</p>
+        <div className='w-full container mx-auto min-h-screen'>
+            <p className='text-center mt-5'>Top Selling Products</p>
             <div class="flex flex-wrap gap-2 p-3 m-auto">
                 {allProducts.map((product) =>
-                    <Card className="w-[300px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-1">
+                    <Card className="w-[285px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-1">
                         <CardHeader>
                             <CardDescription className="text-center">
+
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="justify-center">
-                            <Image src={product.thumbnail} width={100} height={100}></Image>
-                            
+                        <CardContent className="flex justify-center items-center">
+                            <Image src={product.thumbnail} width={150} height={150} alt={product.title} />
                         </CardContent>
                         <CardTitle className="text-center">{product.title}</CardTitle>
                         <CardContent>
-                            <h3 className='text-center font-bold text-xl'>{product.price}</h3>
+                            <h3 className='text-center font-bold text-xl'>${product.price}</h3>
                         </CardContent>
                         <CardFooter className="flex justify-center">
-                            <Button variant="secondary" className='px-3 outline outline-offset-2 outline-blue-500 hover:bg-slate-300'
-                            onClick={handleAddToCart(product)}>
-                                Add to Cart</Button>
+                            <Button variant="secondary" className='px-3 outline outline-offset-2 outline-blue-500 hover:bg-slate-300 pointer-events-auto'
+                                onClick={() => handleAddToCart(product)}>
+                                Add to Cart
+                            </Button>
                         </CardFooter>
                     </Card>
                 )}

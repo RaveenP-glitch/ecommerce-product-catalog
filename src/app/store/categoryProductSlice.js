@@ -10,7 +10,7 @@ const initialState = {
 export const fetchCategoryProducts = createAsyncThunk(  
     'categories/fetchCategoryProducts',   
     async (categoryName) => {  
-        const response = await fetch(`https://dummyjson.com/products/category/${categoryName}?limit=10&select=title,price,product,thumbnail`);  
+        const response = await fetch(`https://dummyjson.com/products/category/${categoryName}?limit=20&select=title,price,product,thumbnail`);  
         const data = await response.json();  
         console.log("Category data: ", data);  
         return data.products.map(product => (
