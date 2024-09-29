@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from 'react';
 import { useParams } from 'next/navigation';  
-import ProductList from '@/app/components/ProductList'; 
+import CategoryProductList from '@/app/components/CategoryProductList';
 
 const CategoryPage = () => {  
     const params = useParams(); // Get URL params  
@@ -12,7 +12,7 @@ const CategoryPage = () => {
     return (  
         <div>  
             <h2>Category Name: {categoryName}</h2> 
-            <ProductList categoryName = {categoryName}/>
+            <CategoryProductList categoryName={categoryName}/>
         </div>  
     );  
 };  
