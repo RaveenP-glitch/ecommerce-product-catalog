@@ -13,7 +13,8 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/shadcn-components/ui/card"
+} from "@/shadcn-components/ui/card";
+import { toast } from "sonner";
 
 const ProductList = () => {
 
@@ -59,8 +60,20 @@ const ProductList = () => {
                             <h3 className='text-center font-bold text-xl'>${product.price}</h3>
                         </CardContent>
                         <CardFooter className="flex justify-center">
-                            <Button variant="secondary" className='px-3 outline outline-offset-2 outline-blue-500 hover:bg-slate-300 pointer-events-auto'
-                                onClick={() => handleAddToCart(product)}>
+                            <Button
+                                className="px-4 py-1 outline outline-offset-2 outline-sky-400 hover:bg-gray-300"
+                                variant="primary"
+                                onClick={() => {
+                                    handleAddToCart(product); // Call the function to add the product to the cart  
+                                    toast("Item has been added to the cart", {
+                                        description: `Added: ${product.title}`, // Use template literals to create a string  
+                                        action: {
+                                            label: "Undo",
+                                            onClick: () => console.log("Undo"),
+                                        },
+                                    });
+                                }}
+                            >
                                 Add to Cart
                             </Button>
                         </CardFooter>
