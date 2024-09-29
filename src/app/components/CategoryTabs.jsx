@@ -1,8 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Button } from "@/shadcn-components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shadcn-components/ui/tabs"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../store/categorySlice';
 
@@ -29,11 +27,11 @@ const CategoryTabs = () => {
     return (
         <div className='w-full'>
             <div class="flex flex-wrap gap-2 bg-slate-200 p-3">
-            {allCategories.slice(0, 10).map((category) =>
-                        <div className=''>
-                            <Link href={`/category/${category.slug}`}><button className='bg-slate-400 text-gray-900 rounded-md p-2 hover:bg-slate-600 hover:text-white'>{category.name}</button></Link>
-                            </div>
-                    )}
+                {allCategories.slice(0, 10).map((category) =>
+                    <div className=''>
+                        <Link href={`/category/${category.slug}`}><button className='bg-slate-400 text-gray-900 rounded-md p-2 hover:bg-slate-600 hover:text-white'>{category.name}</button></Link>
+                    </div>
+                )}
             </div>
         </div>
     )

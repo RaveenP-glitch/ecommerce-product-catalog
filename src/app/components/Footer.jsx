@@ -7,7 +7,7 @@ import XIcon from '@mui/icons-material/X';
 
 const Footer = () => {
   return (
-    <div className='w-full flex lg:flex-row bg-slate-300 justify-between p-6 absolute bottom-0 left-0 sm:flex-col sm:gap-2'>
+    <div className='w-full flex lg:flex-row bg-slate-300 justify-between p-6 bottom-0 left-0 sm:flex-col sm:gap-2'>
         <div>
             <h6 className='font-semibold text-lg mb-1'>&copy; 2024 Mini Shop</h6>
             <div>
@@ -20,7 +20,7 @@ const Footer = () => {
             <Link href="#">Privacy</Link> 
             </div>
         </div>
-        <div className='w-60 flex flex-row justify-between align-middle'>
+        <div className='w-60 flex flex-row justify-between align-'>
             <Link href="#">
                 <FacebookIcon />
             </Link>

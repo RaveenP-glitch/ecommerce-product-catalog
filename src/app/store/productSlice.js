@@ -1,4 +1,3 @@
-//https://dummyjson.com/products?limit=20&select=title,price,product,thumbnail
 "use client"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -11,8 +10,7 @@ const initialState = {
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
     const response = await fetch('https://dummyjson.com/products?limit=20&select=title,price,product,thumbnail');
     const data = await response.json()
-    console.log(data)
-    return data.map(product => (
+    return data.products.map(product => (
         {
            id: product.id,
            title: product.title,

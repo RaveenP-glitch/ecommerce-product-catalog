@@ -5,12 +5,11 @@ import ProductList from '@/app/components/ProductList';
 
 const CategoryPage = () => {
     const params = useParams()
-
-    console.log("params: ", params)
+    const { categoryName } = params
+    console.log("params: ", categoryName)
     return (
         <div>
             <h2>Category Name</h2>
-            <ProductList categoryName={params.category-name}/>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { StoreProvider } from "./store/StoreProvider";
-import { store } from "./store/store";
+import { store } from "./store/store"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
