@@ -21,6 +21,32 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
     ))
 });
 
+export const fetchCategoryProducts = createAsyncThunk(  
+    'categories/fetchCategoryProducts',   
+    async (categoryName) => {  
+        const response = await fetch(`https://dummyjson.com/products/category/${categoryName}?limit=10&select=title,price,product,thumbnail`);  
+
+        // Check for response status and process the JSON  
+        if (!response.ok) {  
+            throw new Error('Failed to fetch category products');  
+        }  
+        
+        const data = await response.json();  
+        console.log(data);  
+
+        // Map the returned data to desired format  
+        return data.products.map(product => (
+            {  
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                category: product.category,
+                thumbnail: product.thumbnail,
+            }  
+        ));  
+    }  
+);  
+
 const productSlice = createSlice({
     name: 'products',
     initialState,
@@ -32,9 +58,20 @@ const productSlice = createSlice({
             state.loading = true;
             state.error = null
         }).addCase(fetchProducts.fulfilled, (state, action) => {
+            state.products = [];
             state.loading = false;
             state.products = action.payload
         }).addCase(fetchProducts.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message
+        }).addCase(fetchCategoryProducts.pending, (state) => {
+            state.loading = true;
+            state.error = null
+        }).addCase(fetchCategoryProducts.fulfilled, (state, action) => {
+            state.products = [];
+            state.loading = false;
+            state.products = action.payload
+        }).addCase(fetchCategoryProducts.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message
         })

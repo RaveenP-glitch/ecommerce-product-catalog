@@ -1,17 +1,20 @@
 "use client"
-import React from 'react';
-import { useParams } from 'next/navigation';
-import ProductList from '@/app/components/ProductList';
+import React, { useEffect } from 'react';
+import { useParams } from 'next/navigation';  
+import ProductList from '@/app/components/ProductList'; 
 
-const CategoryPage = () => {
-    const params = useParams()
-    const { categoryName } = params
-    console.log("params: ", categoryName)
-    return (
-        <div>
-            <h2>Category Name</h2>
-        </div>
-    )
-}
+const CategoryPage = () => {  
+    const params = useParams(); // Get URL params  
+    const categoryName = params['category-name'];
 
-export default CategoryPage
+    console.log("params: ", params); 
+
+    return (  
+        <div>  
+            <h2>Category Name: {categoryName}</h2> 
+            <ProductList categoryName = {categoryName}/>
+        </div>  
+    );  
+};  
+
+export default CategoryPage;
