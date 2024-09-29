@@ -56,7 +56,7 @@ const CategoryProductList = ({ categoryName, filterValue }) => {
             <p className='text-center'>Category: {categoryName}</p>
             <div class="flex flex-wrap gap-2 p-3 m-auto">
                 {sortedProducts.map((product) =>
-                    <Card className="w-[285px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-1">
+                    <Card key={product.id} className="w-[285px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-1">
                         <CardHeader>
                             <CardDescription className="text-center">
 

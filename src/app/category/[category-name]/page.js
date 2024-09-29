@@ -21,7 +21,7 @@ const CategoryPage = () => {
     return (
         <div>
             <div className='flex flex-row justify-between m-2 p-3'>
-                <span className='mx-5'>Home - Category</span>
+                <span className='mx-5'>Home &gt; Category</span>
                 <PriceFilter getFilterValue={getfiltervalue} />
             </div>
             <CategoryProductList categoryName={categoryName} filterValue={filterVal}/>

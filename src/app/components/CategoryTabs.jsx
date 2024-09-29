@@ -28,7 +28,7 @@ const CategoryTabs = () => {
         <div className='w-full'>
             <div class="flex flex-wrap gap-2 bg-slate-200 p-3">
                 {allCategories.slice(0,10).map((category) =>
-                    <div className=''>
+                    <div key={category.slug} className=''>
                         <Link href={`/category/${category.slug}`}><button className='bg-slate-400 text-gray-900 rounded-md p-2 hover:bg-slate-600 hover:text-white'>{category.name}</button></Link>
                     </div>
                 )}
