@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const response = await fetch('https://dummyjson.com/products?limit=20&select=title,price,product,thumbnail');
+    const response = await fetch('https://dummyjson.com/products?limit=20&select=id,title,price,product,category,thumbnail');
     const data = await response.json()
     return data.products.map(product => (
         {

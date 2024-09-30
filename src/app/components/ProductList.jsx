@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from "@/shadcn-components/ui/button"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../store/productSlice';
-import { addToCart } from '../store/cartSlice';
+import { addToCart, removeFromCart } from '../store/cartSlice';
 import {
     Card,
     CardContent,
@@ -41,36 +41,39 @@ const ProductList = () => {
         dispatch(addToCart(product));
     }
 
+    const handleRemoveFromCart = (product) => {
+        dispatch(removeFromCart(product));
+    }
+
     return (
         <div className='w-full container mx-auto min-h-screen'>
             <p className='text-center mt-5'>Top Selling Products</p>
             <div class="flex flex-wrap gap-2 p-3 m-auto">
                 {allProducts.map((product) =>
-                    <Card key={product.id} className="w-[285px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-1">
+                    <Card key={product.id} className="w-[275px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-2">
                         <Link href={`/product/${product.id}`}>
                             <CardHeader>
-                                <CardDescription className="text-center">
+                                <CardDescription className="text-center bg-gray-200 text-cyan-800 rounded-lg  py-1 px-3 text-sm font-semibold">
+                                    {product.category}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="flex justify-center items-center">
-                                <Image src={product.thumbnail} width={150} height={150} alt={product.title} />
+                                <Image src={product.thumbnail} width={185} height={150} alt={product.title} />
                             </CardContent>
                             <CardTitle className="text-center mb-3">{product.title}</CardTitle>
-                            <CardContent>
                                 <h3 className='text-center font-bold text-xl'>${product.price}</h3>
-                            </CardContent>
                         </Link>
                         <CardFooter className="flex justify-center">
                             <Button
-                                className="px-4 py-1 outline outline-offset-2 outline-sky-400 hover:bg-gray-300"
+                                className="px-4 py-1 mb-5 outline rounded-sm font-semibold outline-offset-2 outline-black hover:bg-gray-700 hover:text-white"
                                 variant="primary"
                                 onClick={() => {
-                                    handleAddToCart(product); // Call the function to add the product to the cart  
+                                    handleAddToCart(product);
                                     toast("Item has been added to the cart", {
-                                        description: `Added: ${product.title}`, // Use template literals to create a string  
+                                        description: `Added: ${product.title}`,
                                         action: {
                                             label: "Undo",
-                                            onClick: () => console.log("Undo"),
+                                            onClick: () => {handleRemoveFromCart(product)},
                                         },
                                     });
                                 }}

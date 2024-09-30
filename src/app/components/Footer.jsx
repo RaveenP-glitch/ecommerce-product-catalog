@@ -22,16 +22,16 @@ const Footer = () => {
         </div>
         <div className='w-60 flex flex-row justify-between align-'>
             <Link href="#">
-                <FacebookIcon />
+                <FacebookIcon fontSize='large' />
             </Link>
             <Link href="#">
-                <InstagramIcon />
+                <InstagramIcon fontSize='large' />
             </Link>
             <Link href="#">
-                <LinkedInIcon />
+                <LinkedInIcon fontSize='large' />
             </Link>
             <Link href="#">
-                <XIcon />
+                <XIcon fontSize='large' />
             </Link>
         </div>
     </div>
