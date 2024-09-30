@@ -51,8 +51,8 @@ const CategoryProductList = ({ categoryName, filterValue }) => {
         dispatch(addToCart(product));
     }
 
-    const handleRemoveFromCart = (product) => {
-        dispatch(removeFromCart(product));
+    const handleRemoveFromCart = (productId) => {
+        dispatch(removeFromCart(productId));
     }
 
     return (
@@ -69,7 +69,7 @@ const CategoryProductList = ({ categoryName, filterValue }) => {
                             <CardContent className="flex justify-center items-center">
                                 <Image src={product.thumbnail} width={185} height={150} alt={product.title} />
                             </CardContent>
-                            <CardTitle className="text-center mb-3">{product.title}</CardTitle>
+                            <CardTitle className="text-center mb-3 px-3">{product.title}</CardTitle>
                                 <h3 className='text-center font-bold text-xl'>${product.price}</h3>
                         </Link>
                         <CardFooter className="flex justify-center">
@@ -82,7 +82,7 @@ const CategoryProductList = ({ categoryName, filterValue }) => {
                                         description: `Added: ${product.title}`, 
                                         action: {
                                             label: "Undo",
-                                            onClick: () => handleRemoveFromCart(product),
+                                            onClick: () => handleRemoveFromCart(product.id),
                                         },
                                     });
                                 }}
