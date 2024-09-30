@@ -18,6 +18,7 @@ const PriceFilter = ({ getFilterValue }) => {
         getFilterValue(value);
     };
 
+
     return (
         <div>
             <DropdownMenu>
