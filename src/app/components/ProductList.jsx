@@ -52,15 +52,15 @@ const ProductList = () => {
                 {allProducts.map((product) =>
                     <Card key={product.id} className="w-[275px] bg-slate-100 rounded-md shadow-sm justify-center gap-1 m-2">
                         <Link href={`/product/${product.id}`}>
-                            <CardHeader>
-                                <CardDescription className="text-center bg-gray-200 text-cyan-800 rounded-lg  py-1 px-3 text-sm font-semibold">
+                            <div className='p-2'>
+                                <CardDescription className="text-center bg-gray-200 text-cyan-800 rounded-lg  py-1 px-3 mt-2 text-sm font-semibold">
                                     {product.category}
                                 </CardDescription>
-                            </CardHeader>
+                            </div>
                             <CardContent className="flex justify-center items-center">
                                 <Image src={product.thumbnail} width={185} height={150} alt={product.title} />
                             </CardContent>
-                            <CardTitle className="text-center mb-3 px-3">{product.title}</CardTitle>
+                            <CardTitle className="text-center mb-3 px-3 h-10">{product.title}</CardTitle>
                                 <h3 className='text-center font-bold text-xl'>${product.price}</h3>
                         </Link>
                         <CardFooter className="flex justify-center">

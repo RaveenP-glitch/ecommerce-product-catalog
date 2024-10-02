@@ -31,7 +31,7 @@ const Footer = () => {
                 <LinkedInIcon fontSize='large' />
             </Link>
             <Link href="#">
-                <XIcon fontSize='large' />
+                    <XIcon fontSize='large' />
             </Link>
         </div>
     </div>
