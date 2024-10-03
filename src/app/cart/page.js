@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeItem } from '../store/cartSlice';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import Image from 'next/image';
 
 const Cart = () => {
   const allCartItems = useSelector((state) => state.cart.items);
@@ -33,28 +34,33 @@ const Cart = () => {
     <div>
       <h3 className='font-bold text-xl text-center m-5'>My Cart</h3>
       <div className='container w-3/5 mx-auto min-h-screen'>
-      <div className='left-40'>
-        <p>Item Count</p>
-      </div>
+        <div className='left-40'>
+          <p className='text-right mr-5'>Item Count</p>
+        </div>
         {allCartItems.length > 0 ? allCartItems.map((item) => (
           <div key={item.id} className=" flex justify-between p-2 border rounded-md m-3">
+            <Image src={} />
             <div className='flex flex-col'>
-              <h5>{item.title}</h5>
+              <h5 className='text-sky-400/50 font-bold text-lg '>{item.title}</h5>
               <p>${item.price}</p>
             </div>
             <div className='flex flex-row'>
-                <div><button onClick={() => handleRemoveItem(item)}>
-                  <RemoveIcon />
-                </button></div>
-                <p>{item.count}</p>
-                <div ><button onClick={() => handleAddItem(item)}>
-                  <AddIcon />
-                </button></div>
-    
+              <div className='m-2'>
+                <button className='rounded-xl border-solid' onClick={() => handleRemoveItem(item)}>
+                  <RemoveIcon fontSize='small' />
+                </button>
+              </div>
+              <p className='m-2'>{item.count}</p>
+              <div className='m-2'>
+                <button className='rounded-xl' onClick={() => handleAddItem(item)}>
+                  <AddIcon fontSize='small' />
+                </button>
+              </div>
+
             </div>
           </div>
         ))
-      : <p>Cart is Empty</p>}
+          : <p>Cart is Empty</p>}
       </div>
     </div>
   );
