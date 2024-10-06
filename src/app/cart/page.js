@@ -35,11 +35,11 @@ const Cart = () => {
     <div>
       <h3 className='font-bold text-xl text-center m-5'>My Cart</h3>
       <div className='container w-3/5 mx-auto min-h-screen'>
-        <div className='left-40'>
-          <p className='text-right mr-3 mb-3'>Item Count</p>
-        </div>
         {allCartItems.length > 0 ? allCartItems.map((item) => (
           <div>
+            <div className='left-40'>
+              <p className='text-right mr-3 mb-3'>Item Count</p>
+            </div>
             <div key={item.id} className=" grid grid-cols-4 gap-4 outline outline-1 outline-gray-300 rounded-md mb-4 p-2">
               <div>
                 <Image src={item.thumbnail} width={100} height={100} alt={item.title} />
@@ -57,7 +57,7 @@ const Cart = () => {
                 <p className='m-2 font-bold text-xl'>{item.count}</p>
                 <div className='m-2'>
                   <button className='rounded-xl' onClick={() => handleAddItem(item)}>
-                    <AddIcon fontSize='small' />         
+                    <AddIcon fontSize='small' />
                   </button>
                 </div>
               </div>
@@ -67,11 +67,12 @@ const Cart = () => {
             </div>
           </div>
         ))
-          : <div className="text-center">
+          : <div className="flex flex-row justify-center text-center mt-5">
             <Image
+              className='mx-auto mt-10'
               src={EmptyCartImage}
-              width={200}
-              height={200}
+              width={250}
+              height={250}
               alt={"Empty cart image"}
             />
           </div>
