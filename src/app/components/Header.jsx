@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div>
         <div className='flex flex-row bg-slate-300 justify-between p-2'>
-            <div><Link href="/"><Image src={MainLogo} width={150} height={100}></Image></Link></div>
+            <div><Link href="/"><Image src={MainLogo} width={150} height={100} alt={"main logo"} ></Image></Link></div>
             <div className='content-center mr-8 bg-slate-100 rounded-xl px-4 my-3 shadow-sm'>
                 <Link href={"/cart"}>
                     <ShoppingCartIcon fontSize='medium'/>

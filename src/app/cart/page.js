@@ -36,7 +36,7 @@ const Cart = () => {
       <h3 className='font-bold text-xl text-center m-5'>My Cart</h3>
       <div className='container w-3/5 mx-auto min-h-screen'>
         {allCartItems.length > 0 ? allCartItems.map((item) => (
-          <div>
+          <div key={item.id}>
             <div className='left-40'>
               <p className='text-right mr-3 mb-3'>Item Count</p>
             </div>
